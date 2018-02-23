@@ -851,6 +851,14 @@ function setCookie(c_name,value,expiredays){
     document.cookie=c_name+ "=" +value+((expiredays==null) ? "" : "; expires="+exdate.toGMTString())
 }
 
+function delCookie(c_name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(c_name);
+    if(cval!=null)
+    document.cookie= c_name + "="+cval+";expires="+exp.toUTCString();
+}
+
 //拼接
 function transformRequest(obj){
     var str = [];
@@ -882,4 +890,9 @@ function copyAddress(content,textAreaId,msgDiv){
       if(secondNumber>0)
           secondNumber--;
   },1000);
+}
+
+function signOut() {
+    delCookie(user_token);
+   window.location.href = "#/myLogin";
 }
