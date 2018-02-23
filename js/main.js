@@ -659,13 +659,14 @@ app.controller('registerCtrl',
                                 $("#changeCode").parent().attr("disabled", "disabled");
                                 var secondNumber = 60;
                                 $("#changeCode").text(secondNumber + "s");
-                                setInterval(function () {
+                                var name = setInterval(function () {
                                     if (secondNumber > 0) {
                                         secondNumber--;
                                         $("#changeCode").text(secondNumber + "s");
                                     } else {
                                         $("#changeCode").parent().removeAttr("disabled");
                                         $("#changeCode").text("重新获取");
+                                        clearInterval(name);
                                     }
                                 }, 1000);
                             } else {
@@ -722,13 +723,14 @@ app.controller('registerCtrl',
                         $("#codeContent").parent().attr("disabled","disabled");
                         var secondNumber = 60;
                         $("#codeContent").text(secondNumber+"s");
-                        setInterval(function () {
+                        var name = setInterval(function () {
                             if(secondNumber>0){
                                 secondNumber--;
                                 $("#codeContent").text(secondNumber+"s");
                             }else {
                                 $("#codeContent").parent().removeAttr("disabled");
                                 $("#codeContent").text("重新获取");
+                                clearInterval(name);
                             }
                         },1000);
                     }else{
