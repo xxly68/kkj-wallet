@@ -1,0 +1,15 @@
+
+<ion-header-bar class="purseTool">
+    <i class="icon ion-chevron-left header_left" ng-click="backWard()"></i>
+    <h1 class="title">导出私钥</h1>
+</ion-header-bar>
+<ion-content ng-controller="exportkeyNextCtrl">
+    <div class="list">
+        <a href="#/myKeyInfo?symbol={{wallet.fid}}&tradePassword={{password}}&coinName={{wallet.fshortname}}" class="item item-avatar"  ng-repeat="wallet in walletList">
+            <img  ng-src="http://p-dais.oss-cn-hangzhou.aliyuncs.com{{wallet.furl}}">
+            <h2 class="inlineblock">{{wallet.fshortname}}</h2>
+            <span class="rf">&gt;</span>
+        </a>
+    </div>
+</ion-content>
+<!--助记词不正确，请先备份钱包助记词，弹式框提示-->

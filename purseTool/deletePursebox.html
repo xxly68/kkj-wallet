@@ -1,0 +1,12 @@
+<ion-header-bar class="purseTool">
+    <i class="icon ion-chevron-left header_left" ng-click="backWard()"></i>
+    <h1 class="title">删除钱包</h1>
+</ion-header-bar>
+<ion-content ng-controller="deletePurseboxController">
+    <div style="padding-left: 10px;">请输入备份的钱包助记词(12个英文单词)按空格分隔</div>
+    <!--<textarea name="" id="" cols="30" rows="10" placeholder="请输入备份的钱包助记词"></textarea>-->
+    <label class="item item-input">
+        <textarea rows="10" placeholder="请输入备份的钱包助记词" id="delMemWords"></textarea>
+    </label>
+    <button class="button button-block button-dark" ng-click="confirmDeleteWallet()">立即验证</button>
+</ion-content>

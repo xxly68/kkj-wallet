@@ -1,0 +1,15 @@
+
+<ion-header-bar class="purseTool">
+    <i class="icon ion-chevron-left header_left" ng-click="backWard()"></i>
+    <h1 class="title">导出私钥</h1>
+</ion-header-bar>
+<ion-content ng-controller="exportKeyCtrl">
+    <div>请输入交易密码</div>
+    <label class="item item-input">
+        <input type="password" ng-model="tradePassword">
+    </label>
+    <button class="button button-block button-dark" ng-click="exportKey()">
+        确定
+    </button>
+</ion-content>
+<!--助记词不正确，请先备份钱包助记词，弹式框提示-->

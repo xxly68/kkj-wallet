@@ -1,0 +1,22 @@
+<!--<div class="header">KCASH</div>-->
+<ion-header-bar>
+    <i class="icon ion-chevron-left header_left" ng-click="backWard()"></i>
+    <h1 class="title">添加资产</h1>
+</ion-header-bar>
+<ion-content ng-controller="addAssetCtrl">
+    <div class="content has-header">
+        <ul class="list">
+            <li class="item item-checkbox" ng-repeat="wallet in walletList" >
+                <label class="checkbox" >
+                    <input type="checkbox" id="symbol-{{wallet.symbol}}" value="{{wallet.swithflag}}" ng-click="checkCoinSwitch({{wallet.symbol}})">
+                </label>
+                <div>
+                    <img style="float: right;height: 34px;" ng-src="http://p-dais.oss-cn-hangzhou.aliyuncs.com{{wallet.furl}}">
+                </div>
+                <div style="margin-top: 5px">{{wallet.fshortname}}-{{wallet.fname}}</div>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+
+

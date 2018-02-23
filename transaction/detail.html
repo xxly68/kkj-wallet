@@ -1,0 +1,22 @@
+<ion-header-bar>
+    <i class="icon ion-chevron-left header_left" ng-click="backWard()"></i>
+    <h1 class="title">交易详情</h1>
+</ion-header-bar>
+<ion-content ng-controller="detailController">
+    <div style="padding-left: 40%;padding-bottom: 10px; padding-top: 10px;color: green">
+        {{operationDetail.ftype == 1 ? "+"+operationDetail.famount : "-"+operationDetail.famount}}
+        {{operationDetail.fshortname}}
+    </div>
+    <ul class="detail">
+        <li><p class="HeadDetail">发款方</p><p>{{operationDetail.sendtoaddress}}</p></li>
+        <li><p class="HeadDetail">收款方</p><p>{{operationDetail.receiveaddress}}</p></li>
+        <li><p class="HeadDetail">矿工费用</p><p>{{operationDetail.ffees}}</p></li>
+        <!--<li><p class="HeadDetail">备注</p><p>非常好</p></li>-->
+    </ul>
+    <ul class="number">
+        <li><p class="HeadDetail">交易号:</p><a style="text-decoration:none" href="{{operationDetail.findTradeDetailUrl}}"><p>{{operationDetail.tradeuniquenumber}}</p></a></li>
+        <li><p class="HeadDetail">区块:</p><p>{{operationDetail.blocknumber}}</p></li>
+        <li><p class="HeadDetail">交易时间:</p><p>{{operationDetail.fcreatetime | date:'yyyy-MM-dd HH:mm:ss'}}</p></li>
+        <li class="QRCode"  ><div style="padding-top:18px"  id="urlQRCode"></div></li>
+    </ul>
+</ion-content>

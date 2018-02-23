@@ -1,0 +1,18 @@
+    <ion-header-bar>
+        <i class="icon ion-chevron-left header_left" ng-click="backWard()"></i>
+        <h1 class="title">登录</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="loginCtrl">
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <span>+86</span>
+                <input type="text" placeholder="请输入手机号码" ng-model="floginName">
+            </label>
+        </div>
+        <label class="item item-input">
+            <input type="password" placeholder="请输入密码" ng-model="floginPassword">
+        </label>
+        <button class="button button-block button-dark" ng-click="login()">
+            登录
+        </button>
+    </ion-content>

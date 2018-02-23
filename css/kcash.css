@@ -1,0 +1,174 @@
+.rf {
+  float: right;
+}
+.lf {
+  float: left;
+}
+.inlineblock{
+  display: inline-block;
+}
+ion-content {
+  background: #eee;
+  /*padding: 10px;*/
+}
+ion-header-bar .header_left {
+  padding: 10px;
+  font-size: 20px;
+}
+ion-header-bar .header_right {
+  padding: 10px;
+  font-size: 20px;
+  right: 0px;
+}
+.price {
+  float: right;
+}
+.addAsset {
+  font-size: 20px;
+  color: #e6b500;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  border: 1px dashed #cccccc;
+  margin: 20px;
+}
+.cent img:first-child {
+  margin: 30px ;
+}
+.btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+}
+.btn .btn1 {
+  float: left;
+  width: 50%;
+}
+.btn .btn2 {
+  width: 50%;
+}
+.btn button{
+  border-radius: 0px;
+  padding: 0px 20%;
+  color: #fff;
+  height: 50px;
+}
+.kDetail span{
+  font-size: 22px;
+  margin: 10px;
+}
+.detail {
+  border-top: 2px solid #cccccc;
+  padding: 10px;
+}
+.warn {
+  font-size: 12px;
+  /* color: #e6b500; */
+  /* height: 100px; */
+  /* line-height: 43px; */
+  /* text-align: center; */
+  border: 1px dashed #cccccc;
+  margin: 20px;
+  padding: 20px;
+}
+.content-box {
+  background: #fff;
+  margin: 20px 0;
+  padding: 10px;
+}
+.keyinfo {
+  background: #ffffff;
+  margin: 20px;
+}
+.keyinfo li {
+  border-bottom: 2px solid #eeeeee ;
+  margin: 0 20px;
+}
+.keyinfo li div {
+  display: inline-block;
+  margin: 20px;
+}
+.modal-box {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  min-height: 25%;
+  bottom: 0;
+}
+
+.mem_words{
+    margin: 0 auto;
+    width: 80%;
+}
+.mem_words span{
+    display: inline-block;
+    background: #fff;
+    margin-right: 10px;
+    margin: 7px;
+    padding: 5px;
+}
+.men_bk{
+    background:#a07118;
+}
+/*���׼�¼�б�*/
+.transaction
+{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 12px;
+  background: #fff;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.transaction th
+{
+  font-size: 14px;
+  font-weight: normal;
+  color: #039;
+  padding: 10px 8px;
+  border-bottom: 2px solid #6678b1;
+}
+.transaction td
+{
+  padding: 9px 8px 0px 8px;
+}
+.transaction tbody tr {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+
+.transaction tbody tr:hover td
+{
+  color: #009;
+}
+/*���׼�¼detail����*/
+.detail,.number{
+  border-top: 1px solid #C9CDD0;
+  margin: 0px 10px;
+}
+.detail .HeadDetail,.number .HeadDetail{
+  color:#C9CDD0;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  line-height: 1.2;
+}
+.QRCode{
+  width: 120px;
+  height: 120px;
+  float: right;
+  position: relative;
+  bottom: 150px;
+}
+.tagstylediv{
+  padding-top: 8px;
+  padding-left: 10px
+}
