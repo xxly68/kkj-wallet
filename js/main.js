@@ -641,6 +641,9 @@ app.controller('registerCtrl',
          .controller('changePasswordCtrl',['$scope','$http', function ($scope,$http) {
                 //验证码
                 $scope.verification = function () {
+                    if(typeof($scope.phone) == "undefined" || $scope.phone == ""){
+                        return $scope.showAlert("手机号不能为空","",false);
+                    }
                     $http({
                         method: 'post',
                         url:url+'/user/authCode',
@@ -650,21 +653,50 @@ app.controller('registerCtrl',
                             return transformRequest(obj);
                         }
                     })
+                        .success(function (result) {
+                            if (result.status == 200) {
+                                console.log(result.data);
+                                $("#changeCode").parent().attr("disabled", "disabled");
+                                var secondNumber = 60;
+                                $("#changeCode").text(secondNumber + "s");
+                                setInterval(function () {
+                                    if (secondNumber > 0) {
+                                        secondNumber--;
+                                        $("#changeCode").text(secondNumber + "s");
+                                    } else {
+                                        $("#changeCode").parent().removeAttr("disabled");
+                                        $("#changeCode").text("重新获取");
+                                    }
+                                }, 1000);
+                            } else {
+                                $scope.checkRequestStatus(result);
+                            }
+                        })
             }
             $scope.changePassword = function () {
+                var _authCode = $scope.authCode;
+                var _newPassword = $scope.newPassword;
+                if(typeof(_authCode) == "undefined" || _authCode == ""){
+                    return $scope.showAlert("验证码不能为空","",false);
+                }
+                if(typeof(_newPassword) == "undefined" || _newPassword == ""){
+                    return $scope.showAlert("密码不能为空","",false);
+                }
+
                 $http({
                     method:'post',
                     url:url+'/user/changePassword',
-                    data:{token:getCookie(),oldPassword:$scope.oldPassword,newPassword:$scope.newPassword},
+                    data:{token:getCookie(),authCode:_authCode,oldPassword:$scope.oldPassword,newPassword:_newPassword},
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     transformRequest: function (obj) {
                         return transformRequest(obj);
                     }
                 })
                     .success(function (result) {
-                        console.log(result);
                         if(result.status == 200){
-                            $scope.backWard();
+                            $scope.showAlert("密码修改成功","main",true);
+                        }else{
+                            $scope.checkRequestStatus(result);
                         }
                     })
             }
@@ -672,6 +704,9 @@ app.controller('registerCtrl',
 
     .controller('resetPasswordCtrl',['$scope','$http', function ($scope,$http) {
         $scope.verification = function () {
+            if(typeof($scope.phone) == "undefined" || $scope.phone == ""){
+                return $scope.showAlert("手机号不能为空","",false);
+            }
             $http({
                 method: 'post',
                 url: url+'/user/authCode',
@@ -681,25 +716,60 @@ app.controller('registerCtrl',
                     return transformRequest(obj);
                 }
             })
-                .success(function (data) {
-                    console.log(data);
-                    console.log('验证码'+data.data);
-                    $scope.verifica = data;
+                .success(function (result) {
+                    if(result.status == 200){
+                        console.log(result.data);
+                        $("#codeContent").parent().attr("disabled","disabled");
+                        var secondNumber = 60;
+                        $("#codeContent").text(secondNumber+"s");
+                        setInterval(function () {
+                            if(secondNumber>0){
+                                secondNumber--;
+                                $("#codeContent").text(secondNumber+"s");
+                            }else {
+                                $("#codeContent").parent().removeAttr("disabled");
+                                $("#codeContent").text("重新获取");
+                            }
+                        },1000);
+                    }else{
+                        $scope.checkRequestStatus(result);
+                    }
 
                 })
         }
         $scope.resetPassword = function () {
+            var _authCode = $scope.authCode;
+            var _phone = $scope.phone;
+            var _newPassword = $scope.newPassword;
+            var _repeatPassword = $scope.repeatPassword;
+            if(typeof(_authCode) == "undefined" || _authCode == ""){
+                return $scope.showAlert("验证码不能为空","",false);
+            }
+            if(typeof(_phone) == "undefined" || _phone == ""){
+                return $scope.showAlert("手机号不能为空","",false);
+            }
+            if(typeof(_newPassword) == "undefined" || _newPassword == ""){
+                return $scope.showAlert("密码不能为空","",false);
+            }
+            if(_newPassword != _repeatPassword){
+                return $scope.showAlert("两次密码不一致","",false);
+            }
             $http({
                 method:'post',
                 url:url+'/user/resetPassword',
-                data:{token:getCookie(),authCode:$scope.authCode,phone:$scope.phone,newPassword:$scope.newPassword,repeatPassword:$scope.repeatPassword },
+                data:{token:getCookie(),authCode:_authCode,phone:_phone,newPassword:_newPassword,repeatPassword:_repeatPassword },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function (obj) {
                     return transformRequest(obj);
                 }
             })
                 .success(function (result) {
-                    console.log(result);
+                    if(result.status == 200){
+                        $scope.showAlert("密码找回成功","login",true);
+                    }else{
+                        $scope.checkRequestStatus(result);
+                    }
+
                 })
         }
     }])
